@@ -1187,7 +1187,7 @@ function ProductDetailPage({ slug, cat }) {
     <div style={{ minHeight:"100vh", background:"var(--bg)" }}>
       <PeyaHeader />
       <div className="container" style={{ maxWidth:520, margin:"0 auto", paddingTop:16, paddingBottom:120 }}>
-        <button onClick={() => window.history.back()} style={{ background:"none", border:"none", cursor:"pointer", fontSize:24, marginBottom:16 }}>‹</button>
+        <button onClick={() => navigate("/categoria/" + toSlug(foundCategory))} style={{ background:"none", border:"none", cursor:"pointer", fontSize:24, marginBottom:16 }}>‹</button>
 
         {/* Image */}
         <div style={{ background:"var(--secondary)", borderRadius:20, display:"flex", alignItems:"center", justifyContent:"center", padding:32, marginBottom:24, position:"relative", minHeight:240 }}>
