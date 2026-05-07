@@ -741,34 +741,34 @@ function CategoryBar() {
 function PromoBanners() {
   const [selectedCombo, setSelectedCombo] = useState(null);
   const scrollRef = React.useRef(null);
-  // 3 copies for seamless infinite loop — start scrolled to the middle copy
   const allItems = [...combos, ...combos, ...combos];
-  const CARD_W = 180, GAP = 12;
-  const COLS_PER_SET = Math.ceil(combos.length / 2); // combos fills 2 rows → N/2 columns
-  const setWidth = COLS_PER_SET * (CARD_W + GAP);
 
+  // Posicionar en la copia del medio al montar
   React.useLayoutEffect(() => {
-    if (scrollRef.current) scrollRef.current.scrollLeft = setWidth;
-  }, [setWidth]);
+    const el = scrollRef.current;
+    if (el) el.scrollLeft = el.scrollWidth / 3;
+  }, []);
 
+  // Loop infinito: usar scrollWidth/3 como ancho real de un set
   React.useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
     const onScroll = () => {
-      if (el.scrollLeft < GAP) {
-        el.scrollLeft = setWidth + el.scrollLeft;
-      } else if (el.scrollLeft >= setWidth * 2 - GAP) {
-        el.scrollLeft = el.scrollLeft - setWidth;
+      const sw = el.scrollWidth / 3;
+      if (el.scrollLeft < sw * 0.75) {
+        el.scrollLeft += sw;
+      } else if (el.scrollLeft > sw * 2.25) {
+        el.scrollLeft -= sw;
       }
     };
     el.addEventListener("scroll", onScroll, { passive: true });
     return () => el.removeEventListener("scroll", onScroll);
-  }, [setWidth]);
+  }, []);
 
   const scroll = dir => {
     const el = scrollRef.current;
     if (!el) return;
-    el.scrollBy({ left: dir === "left" ? -(CARD_W + GAP) * 2 : (CARD_W + GAP) * 2, behavior:"smooth" });
+    el.scrollBy({ left: dir === "left" ? -424 : 424, behavior:"smooth" });
   };
 
   return (
@@ -785,29 +785,29 @@ function PromoBanners() {
           </div>
         </div>
         <div ref={scrollRef} className="scrollbar-hide"
-          style={{ display:"grid", gridTemplateRows:"repeat(2,auto)", gridAutoFlow:"column", gridAutoColumns:CARD_W, gap:GAP, overflowX:"auto", paddingBottom:8 }}>
+          style={{ display:"grid", gridTemplateRows:"repeat(2,auto)", gridAutoFlow:"column", gridAutoColumns:200, gap:12, overflowX:"auto", paddingBottom:8 }}>
           {allItems.map((c, i) => (
             <div key={i} onClick={() => setSelectedCombo(c)}
-              style={{ width:CARD_W, borderRadius:14, border:"1px solid var(--border)", overflow:"hidden", background:"var(--card)", cursor:"pointer", transition:"all 0.2s" }}
-              onMouseEnter={e => { e.currentTarget.style.transform="translateY(-4px)"; e.currentTarget.style.boxShadow="0 12px 24px rgba(0,0,0,0.12)"; }}
-              onMouseLeave={e => { e.currentTarget.style.transform="translateY(0)"; e.currentTarget.style.boxShadow="none"; }}>
-              <div style={{ position:"relative", background:"var(--secondary)", display:"flex", alignItems:"center", justifyContent:"center", gap:6, padding:12, height:130 }}>
-                <span style={{ position:"absolute", top:8, left:8, background:"var(--primary)", color:"#fff", fontSize:9, fontWeight:800, padding:"3px 8px", borderRadius:99 }}>{c.badge}</span>
-                <img src={c.image} alt={c.productName} loading="lazy"
-                  style={{ height: c.image2 ? 80 : 104, width:"auto", objectFit:"contain", transition:"transform 0.3s" }}
-                  onMouseEnter={e => e.currentTarget.style.transform="scale(1.06)"}
-                  onMouseLeave={e => e.currentTarget.style.transform="scale(1)"} />
-                {c.image2 && (
-                  <img src={c.image2} alt={c.productName} loading="lazy"
-                    style={{ height:80, width:"auto", objectFit:"contain", transition:"transform 0.3s" }}
-                    onMouseEnter={e => e.currentTarget.style.transform="scale(1.06)"}
-                    onMouseLeave={e => e.currentTarget.style.transform="scale(1)"} />
-                )}
+              style={{ borderRadius:16, overflow:"hidden", cursor:"pointer", transition:"all 0.2s", boxShadow:"0 4px 16px rgba(0,0,0,0.15)" }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform="translateY(-4px)";
+                e.currentTarget.style.boxShadow="0 14px 36px rgba(0,0,0,0.3)";
+                e.currentTarget.querySelectorAll("img").forEach(img => img.style.transform="scale(1.08)");
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform="translateY(0)";
+                e.currentTarget.style.boxShadow="0 4px 16px rgba(0,0,0,0.15)";
+                e.currentTarget.querySelectorAll("img").forEach(img => img.style.transform="scale(1)");
+              }}>
+              <div style={{ position:"relative", background:c.gradient, display:"flex", justifyContent:"center", alignItems:"center", padding: c.image2 ? "20px 10px 14px" : "18px 14px", gap:8, minHeight:130 }}>
+                <span style={{ position:"absolute", top:8, left:8, zIndex:2, background:"rgba(0,0,0,0.45)", backdropFilter:"blur(4px)", color:"#fff", fontSize:10, fontWeight:800, padding:"3px 9px", borderRadius:99 }}>{c.badge}</span>
+                <img src={c.image} alt={c.productName} loading="lazy" style={{ height: c.image2 ? 80 : 110, objectFit:"contain", filter:"drop-shadow(0 6px 18px rgba(0,0,0,0.4))", transition:"transform 0.3s" }} />
+                {c.image2 && <img src={c.image2} alt={c.productName} loading="lazy" style={{ height:80, objectFit:"contain", filter:"drop-shadow(0 6px 18px rgba(0,0,0,0.4))", transition:"transform 0.3s" }} />}
               </div>
-              <div style={{ padding:"10px 12px", display:"flex", flexDirection:"column", gap:3 }}>
-                <div className="line-clamp-2" style={{ fontSize:12, fontWeight:600, color:"var(--fg)", lineHeight:"1.3" }}>{c.productName}</div>
-                <div style={{ fontSize:14, fontWeight:700, color:"var(--fg)" }}>{c.title}</div>
-                <div style={{ fontSize:11, color:"var(--muted)" }}>{c.price} por combo</div>
+              <div style={{ background:c.gradient, borderTop:"1px solid rgba(255,255,255,0.2)", padding:"8px 14px 12px" }}>
+                <div style={{ fontSize:11, fontWeight:700, color:"rgba(255,255,255,0.75)", textTransform:"uppercase", letterSpacing:1, marginBottom:2 }}>{c.productName}</div>
+                <div style={{ fontSize:22, fontWeight:900, color:"#fff", lineHeight:1.1 }}>{c.title}</div>
+                <div style={{ fontSize:11, fontWeight:600, color:"rgba(255,255,255,0.6)", marginTop:2 }}>{c.price} por combo</div>
               </div>
             </div>
           ))}
