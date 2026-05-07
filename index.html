@@ -95,7 +95,7 @@ const categories = [
   { name: "Caramelos",          icon: "🍬", color: "#fff3e5", text: "#ff6b00" },
   { name: "Chicles",            icon: "🌀", color: "#e5ffe8", text: "#27ae74" },
   { name: "Comidas",            icon: "🍽️", color: "#ffe5ef", text: "#e0004e" },
-  { name: "Confites Pastillas", icon: "🔵", color: "#fffde5", text: "#333" },
+  { name: "Pastillitas", icon: "🔵", color: "#fffde5", text: "#333" },
   { name: "Cuidados Personales",icon: "🧴", color: "#e5ffe8", text: "#27ae74" },
   { name: "Encendedores",       icon: "🔥", color: "#fff3e5", text: "#ff6b00" },
   { name: "Galletitas",         icon: "🍪", color: "#fff3e5", text: "#ff6b00" },
@@ -328,7 +328,7 @@ const categoryProducts = {
   "Comidas": [
     { name: "SANDWICH DE MIGA JAMON Y QUESO", image: "/public/imagenes_productos/Comidas/SANDWICH%20DE%20MIGA%20JAMON%20Y%20QUESO.webp", price: "$ 4.500,00", agotado: false }
   ],
-  "Confites Pastillas": [
+  "Pastillitas": [
     { name: "HALLS CHERRY", image: "https://jumboargentina.vteximg.com.br/arquivos/ids/799429/Caramelos-Halls-Cherry-X34g-1-999561.jpg?v=638345364193700000", price: "$ 1.400,00", agotado: false },
     { name: "HALLS FREE CHERRY", image: "https://jumboargentina.vteximg.com.br/arquivos/ids/799430/Caramelos-Halls-Free-Cherry-X24g-1-999562.jpg?v=638345364198970000", price: "$ 1.400,00", agotado: false },
     { name: "HALLS FREE MENTA", image: "https://jumboargentina.vteximg.com.br/arquivos/ids/895208/Caramelos-Extra-Fuerte-Lyptus-X-28-Gr-Halls-1-1040661.jpg?v=639033970255530000", price: "$ 1.400,00", agotado: false },
@@ -721,13 +721,13 @@ function CategoryBar() {
         <div className="scrollbar-hide" style={{ display:"flex", gap:16, overflowX:"auto", paddingBottom:8 }}>
           {categories.map(cat => (
             <button key={cat.name} onClick={() => navigate("/categoria/" + toSlug(cat.name))}
-              style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:8, minWidth:80, background:"none", border:"none", cursor:"pointer" }}>
+              style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:8, width:72, minWidth:72, maxWidth:72, background:"none", border:"none", cursor:"pointer" }}>
               <div style={{ width:64, height:64, borderRadius:16, display:"flex", alignItems:"center", justifyContent:"center", background:cat.color, fontSize:24, transition:"transform 0.2s" }}
                 onMouseEnter={e => e.currentTarget.style.transform="scale(1.08)"}
                 onMouseLeave={e => e.currentTarget.style.transform="scale(1)"}>
                 {cat.icon}
               </div>
-              <span style={{ fontSize:11, fontWeight:600, color:"var(--fg)", textAlign:"center", lineHeight:"1.2", whiteSpace:"nowrap" }}>{cat.name}</span>
+              <span style={{ fontSize:10, fontWeight:600, color:"var(--fg)", textAlign:"center", lineHeight:"1.3", whiteSpace:"normal", wordBreak:"break-word", width:"100%", display:"-webkit-box", WebkitLineClamp:2, WebkitBoxOrient:"vertical", overflow:"hidden" }}>{cat.name}</span>
             </button>
           ))}
         </div>
