@@ -85,29 +85,26 @@ const IMG_PALITOS_COMBO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANwAAAD
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
 const categories = [
-  { name: "Alfajores",         icon: "🍫", color: "#ffe5ef", text: "#e0004e" },
-  { name: "Analgesicos",       icon: "💊", color: "#e5ffe8", text: "#27ae74" },
-  { name: "Bebidas",           icon: "🥤", color: "#ffe5e5", text: "#ef4444" },
-  { name: "Caramelos",         icon: "🍬", color: "#fff3e5", text: "#ff6b00" },
-  { name: "Chicles",           icon: "🌀", color: "#e5ffe8", text: "#27ae74" },
-  { name: "Chocolates",        icon: "🍫", color: "#ffe5ef", text: "#e0004e" },
-  { name: "Chupetines",        icon: "🍭", color: "#fff3e5", text: "#ff6b00" },
-  { name: "Cigarrillos",       icon: "🚬", color: "#f5f5f5", text: "#737373" },
-  { name: "Comidas",           icon: "🍽️", color: "#ffe5ef", text: "#e0004e" },
-  { name: "Confites Pastillas",icon: "🔵", color: "#fffde5", text: "#333" },
-  { name: "Galletitas",        icon: "🍪", color: "#fff3e5", text: "#ff6b00" },
-  { name: "Gomitas",           icon: "🐻", color: "#ffe5e5", text: "#ef4444" },
-  { name: "Helados",           icon: "🍦", color: "#fff3e5", text: "#ff6b00" },
-  { name: "Mix de Gomitas",    icon: "🌈", color: "#e5ffe8", text: "#27ae74" },
-  { name: "Postres",           icon: "🎂", color: "#ffe5ef", text: "#e0004e" },
-  { name: "Salados",           icon: "🍿", color: "#fffde5", text: "#333" },
-  { name: "Cereales",         icon: "🌾", color: "#fffde5", text: "#b8860b" },
-  { name: "Encendedores",     icon: "🔥", color: "#fff3e5", text: "#ff6b00" },
-  { name: "Higiene",          icon: "🧼", color: "#e5ffe8", text: "#27ae74" },
-  { name: "Infusiones",       icon: "☕", color: "#fff3e5", text: "#ff6b00" },
-  { name: "Pilas",            icon: "🔋", color: "#e5ffe8", text: "#27ae74" },
-  { name: "Tabaco",           icon: "🍃", color: "#f5f5f5", text: "#737373" },
-  { name: "Tabaqueria",       icon: "🌿", color: "#f5f5f5", text: "#737373" },
+  { name: "Alfajores",          icon: "🍫", color: "#ffe5ef", text: "#e0004e" },
+  { name: "Bebidas",            icon: "🥤", color: "#ffe5e5", text: "#ef4444" },
+  { name: "Chocolates",         icon: "🍫", color: "#ffe5ef", text: "#e0004e" },
+  { name: "Cereales",           icon: "🌾", color: "#fffde5", text: "#b8860b" },
+  { name: "Cigarrillos",        icon: "🚬", color: "#f5f5f5", text: "#737373" },
+  { name: "Tabaqueria",         icon: "🌿", color: "#f5f5f5", text: "#737373" },
+  { name: "Tabaco",             icon: "🍃", color: "#f5f5f5", text: "#737373" },
+  { name: "Caramelos",          icon: "🍬", color: "#fff3e5", text: "#ff6b00" },
+  { name: "Chicles",            icon: "🌀", color: "#e5ffe8", text: "#27ae74" },
+  { name: "Comidas",            icon: "🍽️", color: "#ffe5ef", text: "#e0004e" },
+  { name: "Confites Pastillas", icon: "🔵", color: "#fffde5", text: "#333" },
+  { name: "Cuidados Personales",icon: "🧴", color: "#e5ffe8", text: "#27ae74" },
+  { name: "Encendedores",       icon: "🔥", color: "#fff3e5", text: "#ff6b00" },
+  { name: "Galletitas",         icon: "🍪", color: "#fff3e5", text: "#ff6b00" },
+  { name: "Gomitas",            icon: "🐻", color: "#ffe5e5", text: "#ef4444" },
+  { name: "Helados",            icon: "🍦", color: "#fff3e5", text: "#ff6b00" },
+  { name: "Infusiones",         icon: "☕", color: "#fff3e5", text: "#ff6b00" },
+  { name: "Pilas",              icon: "🔋", color: "#e5ffe8", text: "#27ae74" },
+  { name: "Postres",            icon: "🎂", color: "#ffe5ef", text: "#e0004e" },
+  { name: "Salados",            icon: "🍿", color: "#fffde5", text: "#333" },
 ];
 
 const featuredProducts = [
@@ -163,9 +160,10 @@ const categoryProducts = {
     { name: "GUAYMALLEN FRUTA SIMPLE", image: "https://jumboargentina.vteximg.com.br/arquivos/ids/787908/Alfajor-Guaymallen-Fruta-Simple-X38g-1-972199.jpg?v=638247837700630000", price: "$ 450,00", agotado: false },
     { name: "GUAYMALLEN TRIPLE CHOCOLATE", image: "/public/imagenes_productos/alfajores/GUAYMALLEN%20TRIPLE%20CHOCOLATE.webp", price: "$ 800,00", agotado: false }
   ],
-  "Analgesicos": [
+  "Cuidados Personales": [
     { name: "TE VIC", image: "/public/imagenes_productos/ANALGESICOS/TE%20VICk.webp", price: "$ 1.500,00", agotado: false },
-    { name: "UVASAL", image: "/public/imagenes_productos/ANALGESICOS/UVASAL.webp", price: "$ 1.000,00", agotado: false }
+    { name: "UVASAL", image: "/public/imagenes_productos/ANALGESICOS/UVASAL.webp", price: "$ 1.000,00", agotado: false },
+    { name: "PRESERVATIVO PRIME", image: "https://jumboargentina.vteximg.com.br/arquivos/ids/672711/Preservativo-Prime-Retardante-Gel-Nat-X6-1-879907.jpg?v=637707945951230000", price: "$ 4.000,00", agotado: false }
   ],
   "Bebidas": [
     { name: "AGUA C/G VILLAVICENCIO 1.5L", image: "https://jumboargentina.vteximg.com.br/arquivos/ids/835767/Agua-Sin-Gas-Villavicencio-1-5-L-1-997457.jpg?v=638627063506130000", price: "$ 2.500,00", agotado: false },
@@ -450,9 +448,6 @@ const categoryProducts = {
     { name: "BIC MINI", image: "/public/imagenes_productos/ENCENDEDORES/BIC%20MINI.webp", price: "$ 1.500,00", agotado: false },
     { name: "CLIPPER GRANDE", image: "/public/imagenes_productos/ENCENDEDORES/CLIPPER%20GRANDE.jpg", price: "$ 2.500,00", agotado: false },
     { name: "MINI CLIPPER", image: "/public/imagenes_productos/ENCENDEDORES/MINI%20CLIPPER.jpg", price: "$ 1.500,00", agotado: false }
-  ],
-  "Higiene": [
-    { name: "PRESERVATIVO PRIME", image: "https://jumboargentina.vteximg.com.br/arquivos/ids/672711/Preservativo-Prime-Retardante-Gel-Nat-X6-1-879907.jpg?v=637707945951230000", price: "$ 4.000,00", agotado: false }
   ],
   "Infusiones": [
     { name: "MATE COCIDO TARAGUI", image: "https://jumboargentina.vteximg.com.br/arquivos/ids/625956/Mate-Cocido-Taragui-S-e-F-diamantado-5x50x3gr-1-859376.jpg?v=637533674731570000", price: "$ 1.000,00", agotado: false }
